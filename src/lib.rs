@@ -1,4 +1,5 @@
 use bevy::{prelude::*, window::WindowMode};
+use bevy_egui::{egui, EguiContexts, EguiPlugin};
 
 pub const LAUNCHER_TITLE: &str = "Bevy Shell - Template";
 
@@ -19,14 +20,22 @@ pub fn app(fullscreen: bool) -> App {
         },
         ..default()
     }))
-    .add_startup_system(load_icon);
-    app
+    .add_plugins(EguiPlugin)
+    //.add_startup_system(load_icon);
+    //app
+    .add_systems(Update, ui_example_system)
+    .run();
 }
 
-fn load_icon(mut commands: Commands, asset_server: Res<AssetServer>) {
+fn ui_example_system(mut contexts: EguiContexts) {
+egui::Window::new("Hello").show(contexts.ctx_mut(), |ui| {
+    ui.label("world");
+});
+
+/*fn load_icon(mut commands: Commands, asset_server: Res<AssetServer>) {
     commands.spawn(Camera2dBundle::default());
     commands.spawn(SpriteBundle {
         texture: asset_server.load("bevy.png"),
         ..default()
     });
-}
+}*/
