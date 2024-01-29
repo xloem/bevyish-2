@@ -28,9 +28,10 @@ pub fn app(fullscreen: bool) -> App {
 }
 
 fn ui_example_system(mut contexts: EguiContexts) {
-egui::Window::new("Hello").show(contexts.ctx_mut(), |ui| {
+  egui::Window::new("Hello").show(contexts.ctx_mut(), |ui| {
     ui.label("world");
-});
+  });
+}
 
 /*fn load_icon(mut commands: Commands, asset_server: Res<AssetServer>) {
     commands.spawn(Camera2dBundle::default());
