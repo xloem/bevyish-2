@@ -1,7 +1,7 @@
 name: Release DockerHub
-on:
-  push:
-    tags: ["v*"]
+on: workflow_dispatch
+#  push:
+#    tags: ["v*"]
 
 env:
   RELEASE_NAME: bevy_shell
